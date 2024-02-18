@@ -7,9 +7,9 @@ import {
   updateProfile,
 } from "firebase/auth";
 import { auth } from "../utils/firebase";
-import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
+import { NETFLIX, USER_AVATAR } from "../utils/constants";
 
 const Login = () => {
   const [isSignInForm, setIsSignInForm] = useState(true);
@@ -18,13 +18,11 @@ const Login = () => {
   const email = useRef(null);
   const password = useRef(null);
   const fullName = useRef(null);
-  const navigate = useNavigate();
   const toggleSignInForm = () => {
     setIsSignInForm(!isSignInForm);
   };
 
   const handleButtonClick = (e) => {
-    // console.log(email.current.value, password.current.value);
     const message = checkValidData(email.current.value, password.current.value);
     setErrorMessage(message);
     if (message) return;
@@ -39,7 +37,7 @@ const Login = () => {
           // Signed up
           updateProfile(auth.currentUser, {
             displayName: fullName.current.value,
-            photoURL: "https://avatars.githubusercontent.com/u/48406485?v=4",
+            photoURL: USER_AVATAR,
           })
             .then(() => {
               const { uid, email, displayName, photoURL } = auth.currentUser;
@@ -51,7 +49,6 @@ const Login = () => {
                   photoURL: photoURL,
                 })
               );
-              navigate("/browse");
             })
             .catch((error) => {
               setErrorMessage(error.message);
@@ -70,10 +67,7 @@ const Login = () => {
         password.current.value
       )
         .then((userCredential) => {
-          // Signed in
           const user = userCredential.user;
-          console.log(user);
-          navigate("/browse");
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -85,11 +79,7 @@ const Login = () => {
   return (
     <div>
       <Header />
-      <img
-        className="absolute"
-        src="https://assets.nflxext.com/ffe/siteui/vlv3/ab4b0b22-2ddf-4d48-ae88-c201ae0267e2/0efe6360-4f6d-4b10-beb6-81e0762cfe81/IN-en-20231030-popsignuptwoweeks-perspective_alpha_website_large.jpg"
-        alt="logo"
-      ></img>
+      <img className="absolute" src={NETFLIX} alt="logo"></img>
 
       <form
         onSubmit={(e) => e.preventDefault()}
