@@ -28,6 +28,11 @@
 - update the store for fetch trailer video
 - Embeded the youtube trailer video and make it autoplay and mute
 - Added tailwind classes to make maincontainer look awesome
+- Build Secondary components
+- Build movie List inside Secondary container
+- Find put TMDB image CDN url
+- Tailwind CSS to secondary container with BG and negative margin-top
+- usePopularMovies , useTopRatedMovies, useUpComingMovies - custom hooks
 
 # Features
 - Login/Sign up page
