@@ -33,6 +33,10 @@
 - Find put TMDB image CDN url
 - Tailwind CSS to secondary container with BG and negative margin-top
 - usePopularMovies , useTopRatedMovies, useUpComingMovies - custom hooks
+- GPT Search Feature
+- GPT search bar
+- (BONUS) Multilingual feature in our App
+- Integrate GPT APIs
 
 # Features
 - Login/Sign up page

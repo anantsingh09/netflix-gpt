@@ -9,7 +9,6 @@ const usePopularMovies = () => {
     fetch(POPULAR_MOVIES, API_OPTIONS)
       .then((res) => res.json())
       .then((json) => {
-        console.log(json);
         dispatch(addPopularMovies(json.results));
       })
       .catch((err) => console.error("error:" + err));

@@ -13,7 +13,6 @@ const useTopRatedMovies = () => {
     fetch(TOP_RATED_MOVIES, API_OPTIONS)
       .then((res) => res.json())
       .then((json) => {
-        console.log(json);
         dispatch(addTopRatedMovies(json.results));
       })
       .catch((err) => console.error("error:" + err));
